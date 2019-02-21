@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_cors import CORS
+from coding_challenge import *
 
 from blueprints import (
     apply_to_device, create_access_code, download_as_csv, get_co2_details,
