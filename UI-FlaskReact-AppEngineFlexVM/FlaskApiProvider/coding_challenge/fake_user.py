@@ -20,13 +20,23 @@ class FakeUser(User):
         return self.user_uuid
 
     def login_user(self,client):
-        result = db.query('Users', username=self.username)
-        if not result:
+        user = FakeUser.fetch({'username': self.username})
+        if not user:
             return None, None
-        if not pbkdf2_sha256.verify(self.password, result.get('password', '')):
+        if not pbkdf2_sha256.verify(self.password, user.get('password', '')):
             return None, None
-        user_uuid = result.get('user_uuid')
-        is_admin = result.get('is_admin', False)
+        user_uuid = user.get('user_uuid')
+        is_admin = user.get('is_admin', False)
         return user_uuid, is_admin
+
+    @staticmethod
+    def fetch(keys):
+        return db.query('Users', keys)
+
+    @staticmethod
+    def change_password(user_uuid, new_password):
+        encrypted_password = pbkdf2_sha256.hash(new_password)
+        return db.update('Users', {'password': encrypted_password}, {'user_uuid': user_uuid})
+
 
 User = FakeUser

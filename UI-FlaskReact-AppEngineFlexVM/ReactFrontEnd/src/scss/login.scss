@@ -60,6 +60,12 @@
     font-size: 12px;
   }
 
+  .message-bold {
+    margin: 15px 0;
+    color: darken(#b3b3b3, 40);
+    font-size: 13px;
+  }
+
   .message a {
     color: #999999;
     text-decoration: none;
@@ -70,4 +76,7 @@
     padding:15px;
   }
 
+  a {
+    cursor: pointer;
+  }
 }

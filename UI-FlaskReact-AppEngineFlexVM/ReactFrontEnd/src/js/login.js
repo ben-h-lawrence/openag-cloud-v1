@@ -27,6 +27,7 @@ class login extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.verifyUser = this.verifyUser.bind(this)
         this.signUpClick = this.signUpClick.bind(this);
+        this.accountRecoveryClick = this.accountRecoveryClick.bind(this);
 
     }
 
@@ -41,6 +42,15 @@ class login extends Component {
                     }
                     else {
              window.location.href = "/signup"
+        }
+    }
+    accountRecoveryClick()
+    {
+         if(this.state.vcode != "" && this.state.vcode != undefined && this.state.vcode != "undefined") {
+                        window.location.href = "/signup?vcode=" + this.state.vcode
+                    }
+                    else {
+             window.location.href = "/account_recovery"
         }
     }
     verifyUser()
@@ -151,7 +161,10 @@ class login extends Component {
                                    onChange={this.handleChange}/>
                             <button>login</button>
 
-                            <p className="message">Not registered? <a onClick={this.signUpClick}> Create an account </a> </p>
+                            <p className="message">Not registered?
+                                <a onClick={this.signUpClick}> Create an account </a>
+                                <br/><a onClick={this.accountRecoveryClick}> Forgot Username or Password? </a>
+                            </p>
                         </form>
                     </div>
                 </div>

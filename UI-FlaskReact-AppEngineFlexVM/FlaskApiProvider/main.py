@@ -8,7 +8,7 @@ from blueprints import (
     get_temp_details, get_user_devices, post_to_twitter, get_recipe_by_uuid,
     register_device, get_all_recipes, get_device_types, submit_recipe,
     get_plant_types, save_recipe, submit_recipe_change, verify_user_session,
-    user_authenticate, upload_images, get_user_info, get_device_peripherals,
+    user_authenticate, account_recovery, upload_images, get_user_info, get_device_peripherals,
 post_to_discourse,discourse_forum,
     submit_access_code,get_current_recipe, get_device_images,submit_horticulture_measurements,
     get_current_recipe_info, save_recipe_for_later,apply_recipe_to_device,save_user_profile_changes,get_current_device_status,submit_access_chamber,get_device_recipe_history,daily_horticulture_measurements,get_horticulture_daily_logs
@@ -30,6 +30,7 @@ app.register_blueprint(register_device.register_bp)
 app.register_blueprint(save_recipe.save_recipe_bp)
 app.register_blueprint(submit_recipe_change.submit_recipe_change_bp)
 app.register_blueprint(user_authenticate.user_authenticate)
+app.register_blueprint(account_recovery.account_recovery)
 app.register_blueprint(verify_user_session.verify_user_session_bp)
 app.register_blueprint(get_device_peripherals.get_device_peripherals_bp)
 app.register_blueprint(submit_recipe.submit_recipe_bp)

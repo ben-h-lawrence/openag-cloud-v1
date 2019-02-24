@@ -4,6 +4,8 @@ import '../scss/header.scss';
 import {BrowserRouter as Router, Route, NavLink, Switch} from "react-router-dom";
 import {SignUp} from "./signup";
 import login from "./login";
+import {AccountRecovery} from "./account_recovery"
+import {PasswordReset} from "./password_reset"
 import profile from "./profile";
 import Home from "./home";
 import recipes from "./recipes";
@@ -44,9 +46,8 @@ class App extends Component {
         this.showHideHeader = this.showHideHeader.bind(this);
         this.logout = this.logout.bind(this);
         this.navLink = this.navLink.bind(this)
-        if (window.location.href.indexOf('login') > 0 || window.location.href.indexOf('signup') > 0) {
+        if (window.location.href.indexOf('login') > 0 || window.location.href.indexOf('signup') > 0 || window.location.href.indexOf('account_recovery') > 0 || window.location.href.indexOf('password_reset') > 0) {
             this.authentication_page = true
-
         }
     }
 
@@ -86,6 +87,8 @@ class App extends Component {
                     <Switch>
                         <Route path='/login' component={login}/>
                         <Route path='/signup' component={SignUp}/>
+                        <Route path='/account_recovery' component={AccountRecovery}/>
+                        <Route path='/password_reset' component={PasswordReset}/>
                     </Switch>
                 </main>
             </Router>)
@@ -135,6 +138,7 @@ class App extends Component {
                             <Route path='/recipes' component={recipes}/>
                             <Route path='/login' component={login}/>
                             <Route path='/signup' component={SignUp}/>
+                            <Route path='/account_recovery' component={AccountRecovery}/>
                             <Route path='/profile' component={profile}/>
                             <Route path='/device_homepage' component={DeviceHomepage}/>
                             <Route path='/new_recipe/:recipe_uuid' component={NewRecipe}/>
